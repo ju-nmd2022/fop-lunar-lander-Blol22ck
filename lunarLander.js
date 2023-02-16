@@ -307,7 +307,7 @@ function moonPlanet(x, y, moonScale) {
   pop();
 }
 
-startButton(50, 50, 1);
+// startButton(50, 50, 1);
 // rocket(x, 200, 1);
 // fire(100, 100, 1);
 // moonPlanet(10, 50, 1.5);
@@ -315,9 +315,3 @@ startButton(50, 50, 1);
 // Add sound effects
 // Add glow to drawings
 // Add noise to the graphics
-
-function draw() {
-  startButton();
-  drawing.Context.shadowBlur = 32;
-  drawingContext.shadowColor = color(207, 7, 99);
-}
