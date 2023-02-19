@@ -1,5 +1,6 @@
 let x = 100;
 let y = 100;
+const speed = 10;
 
 const startScale = 1.0;
 const rocketScale = 1.0;
@@ -376,10 +377,40 @@ function moonPlanet(x, y, moonScale) {
   pop();
 }
 
+function car(x, y, rotation) {
+  push();
+  translate(x, y);
+  rotate(rotation);
+  fill(128, 128, 0);
+  rect(-50, -30, 100, 60, 10);
+}
+
+function draw() {
+  background(255, 255, 255);
+  car(100, 100, 0.5);
+}
+
+// ROCKET MOVEMENT
+// function draw() {
+//   if (keyIsDown(65)) {
+//     x = x - speed;
+//   } else if (keyIsDown(68)) {
+//     x = x + speed;
+//   }
+//   if (keyIsDown(83)) {
+//     y = y + speed;
+//   } else if (keyIsDown(87)) {
+//     y = y - speed;
+//   }
+//   clear();
+//   background(40, 40, 40);
+//   rocket(x, y, 0.6);
+// }
+
 // startButton(50, 50, 1);
 // rocket(x, 200, 1);
 // fire(100, 100, 1);
-moonPlanet(10, 50, 1.5);
+//moonPlanet(10, 50, 1.5);
 
 // Add sound effects
 // Add glow to drawings
