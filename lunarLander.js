@@ -595,10 +595,10 @@ function moonPlanet(x, y, moonScale) {
 //   rocket(x, y, 0.6);
 // }
 
-// startButton(50, 50, 1);
-// rocket(x, 200, 1);
-// fire(100, 100, 1);
-moonPlanet(10, 50, 1);
+startButton(210, 500, 1);
+rocket(350, 700, 0.4);
+fire(350, 650, 0.4);
+moonPlanet(150, 50, 1);
 
 // Add sound effects
 // Add glow to drawings
