@@ -64,7 +64,7 @@ function startButton(x, y, startScale) {
   push();
   fill(0, 100, 50);
   textSize(30 * startScale);
-  text(startText, x + 150 * startScale, y + 145 * startScale);
+  text(startText, x + 150 * startScale, y + 150 * startScale);
   pop();
 
   // LONG BARS
@@ -76,7 +76,7 @@ function startButton(x, y, startScale) {
   );
   rect(
     x + 100 * startScale,
-    y + 160 * startScale,
+    y + 170 * startScale,
     200 * startScale,
     10 * startScale
   );
@@ -88,27 +88,38 @@ function startButton(x, y, startScale) {
     10 * startScale,
     10 * startScale
   );
+
   rect(
     x + 80 * startScale,
     y + 120 * startScale,
     10 * startScale,
     10 * startScale
   );
+
   rect(
     x + 70 * startScale,
     y + 130 * startScale,
     10 * startScale,
     10 * startScale
   );
+
   rect(
-    x + 80 * startScale,
+    x + 70 * startScale,
     y + 140 * startScale,
     10 * startScale,
     10 * startScale
   );
+
+  rect(
+    x + 80 * startScale,
+    y + 150 * startScale,
+    10 * startScale,
+    10 * startScale
+  );
+
   rect(
     x + 90 * startScale,
-    y + 150 * startScale,
+    y + 160 * startScale,
     10 * startScale,
     10 * startScale
   );
@@ -120,27 +131,38 @@ function startButton(x, y, startScale) {
     10 * startScale,
     10 * startScale
   );
+
   rect(
     x + 310 * startScale,
     y + 120 * startScale,
     10 * startScale,
     10 * startScale
   );
+
   rect(
     x + 320 * startScale,
     y + 130 * startScale,
     10 * startScale,
     10 * startScale
   );
+
   rect(
-    x + 310 * startScale,
+    x + 320 * startScale,
     y + 140 * startScale,
     10 * startScale,
     10 * startScale
   );
+
+  rect(
+    x + 310 * startScale,
+    y + 150 * startScale,
+    10 * startScale,
+    10 * startScale
+  );
+
   rect(
     x + 300 * startScale,
-    y + 150 * startScale,
+    y + 160 * startScale,
     10 * startScale,
     10 * startScale
   );
@@ -598,7 +620,7 @@ function moonPlanet(x, y, moonScale) {
 startButton(210, 500, 1);
 rocket(350, 700, 0.4);
 fire(350, 650, 0.4);
-moonPlanet(150, 50, 1);
+moonPlanet(150, 0, 1);
 
 // Add sound effects
 // Add glow to drawings
