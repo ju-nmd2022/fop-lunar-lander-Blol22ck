@@ -31,7 +31,7 @@ function rocket(x, y, rocketScale) {
   );
   rect(
     x + 150 * rocketScale,
-    y + 81 * rocketScale,
+    y + 82 * rocketScale,
     50 * rocketScale,
     70 * rocketScale
   );
