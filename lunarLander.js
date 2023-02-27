@@ -8,8 +8,6 @@ const fireScale = 1.0;
 const moonScale = 1.0;
 
 let startText = "START";
-
-background(40, 40, 40);
 noStroke();
 
 // ROCKET   ROCKET   ROCKET   ROCKET
@@ -602,19 +600,14 @@ function moonPlanet(x, y, moonScale) {
 
 //ROCKET MOVEMENT
 function draw() {
-  if (keyIsDown(65)) {
+  if (keyIsDown(87)) {
     x = x - speed;
-  } else if (keyIsDown(68)) {
+  } else if (keyIsDown(83)) {
     x = x + speed;
   }
-  if (keyIsDown(83)) {
-    y = y + speed;
-  } else if (keyIsDown(87)) {
-    y = y - speed;
-  }
-  clear();
+
   background(40, 40, 40);
-  rocket(300, 500, 0.4);
+  rocket(100, 100, 0.4);
 }
 
 //startButton(210, 500, 1);
