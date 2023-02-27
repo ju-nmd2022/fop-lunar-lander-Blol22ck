@@ -600,27 +600,27 @@ function moonPlanet(x, y, moonScale) {
   pop();
 }
 
-// ROCKET MOVEMENT
-// function draw() {
-//   if (keyIsDown(65)) {
-//     x = x - speed;
-//   } else if (keyIsDown(68)) {
-//     x = x + speed;
-//   }
-//   if (keyIsDown(83)) {
-//     y = y + speed;
-//   } else if (keyIsDown(87)) {
-//     y = y - speed;
-//   }
-//   clear();
-//   background(40, 40, 40);
-//   rocket(x, y, 0.6);
-// }
+//ROCKET MOVEMENT
+function draw() {
+  if (keyIsDown(65)) {
+    x = x - speed;
+  } else if (keyIsDown(68)) {
+    x = x + speed;
+  }
+  if (keyIsDown(83)) {
+    y = y + speed;
+  } else if (keyIsDown(87)) {
+    y = y - speed;
+  }
+  clear();
+  background(40, 40, 40);
+  rocket(300, 500, 0.4);
+}
 
-startButton(210, 500, 1);
-rocket(350, 700, 0.4);
-fire(350, 650, 0.4);
-moonPlanet(150, 0, 1);
+//startButton(210, 500, 1);
+//rocket(350, 700, 0.4);
+//fire(350, 650, 0.4);
+//moonPlanet(150, 0, 1);
 
 // Add sound effects
 // Add glow to drawings
