@@ -1,20 +1,24 @@
 let x = 100;
 let y = 100;
+
 const speed = 10;
+let rocketY = 100;
+let rocketX = 100;
+let rocketVelocity = 1;
+let acceleration = 0.2;
+
+let isGameActive = true;
 
 const startScale = 1.0;
 const rocketScale = 1.0;
 const fireScale = 1.0;
 const moonScale = 1.0;
-
-let startText = "START";
-background(40, 40, 40);
 noStroke();
 
 // ROCKET   ROCKET   ROCKET   ROCKET
 function rocket(x, y, rocketScale) {
   push();
-  fill(150, 150, 150);
+  fill(0, 200, 40);
 
   // FEET
   rect(x + 80 * rocketScale, y + 210 * rocketScale, 50 * rocketScale);
@@ -37,34 +41,18 @@ function rocket(x, y, rocketScale) {
   pop();
 }
 
-// FIRE FIRE FIRE FIRE FIRE FIRE FIRE FIRE FIRE FIRE
-
-function fire(x, y, fireScale) {
-  push();
-  fill(150, 150, 150);
-
-  rect(x + 100 * fireScale, y + 400 * fireScale, 30 * fireScale);
-  rect(x + 130 * fireScale, y + 430 * fireScale, 30 * fireScale);
-  rect(x + 160 * fireScale, y + 400 * fireScale, 30 * fireScale);
-  rect(x + 190 * fireScale, y + 430 * fireScale, 30 * fireScale);
-  rect(x + 220 * fireScale, y + 400 * fireScale, 30 * fireScale);
-  rect(x + 160 * fireScale, y + 460 * fireScale, 30 * fireScale);
-
-  pop();
-}
-
 //  START BUTTON    START BUTTON    START BUTTON
 function startButton(x, y, startScale) {
-  push();
-
-  fill(150, 150, 150);
-
   // START TEXT
   push();
+
   fill(0, 100, 50);
   textSize(30 * startScale);
-  text(startText, x + 150 * startScale, y + 150 * startScale);
+  text("START", x + 150 * startScale, y + 150 * startScale);
   pop();
+
+  push();
+  fill(150, 150, 150);
 
   // LONG BARS
   rect(
@@ -600,27 +588,46 @@ function moonPlanet(x, y, moonScale) {
 }
 
 function draw() {
-  if (keyIsDown(87)) {
-    y = y - speed;
-  } else if (keyIsDown(83)) {
-    y = y + speed;
-  }
-  if (keyIsDown(65)) {
-    x = x - speed;
-  } else if (keyIsDown(68)) {
-    x = x + speed;
-  }
-
   clear();
   background(40, 40, 40);
-  rocket(200, y, 0.4);
+  moonPlanet(x - 310, y, 2);
+  moonPlanet(x + 250, y - 100, 0.5);
+  rocket(rocketX + 175, rocketY, 0.15);
+
+  if (isGameActive) {
+    rocketY = rocketY + rocketVelocity;
+    rocketVelocity = rocketVelocity + acceleration;
+  }
+
+  if (rocketY > 330) {
+    isGameActive = false;
+  }
+
+  if (keyIsDown(87)) {
+    rocketVelocity = rocketVelocity - 0.8;
+  }
+
+  if (keyIsDown(65)) {
+    rocketX = rocketX - speed;
+  } else if (keyIsDown(68)) {
+    rocketX = rocketX + speed;
+  }
 }
 
-//startButton(210, 500, 1);
+//startButton(110, 500, 1);
 //rocket(350, 700, 0.4);
-//fire(350, 650, 0.4);
 //moonPlanet(150, 0, 1);
 
+//NEXT STEPS:
+//Add velocity to the rocket XXX
+//Build a planet to land on XXX
+//Make it land on the planet (Point out the Y value) XXX
+//Create background with stars
+//Create Start and Finish / Game over screen
+//Calculate velocity to see if it is victory or loss
+//Add planning document
+
+//EXTRAS:
 // Add sound effects
 // Add glow to drawings
 // Add noise to the graphics
