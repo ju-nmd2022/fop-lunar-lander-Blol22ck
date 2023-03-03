@@ -41,118 +41,34 @@ function rocket(x, y, rocketScale) {
   pop();
 }
 
-//  START BUTTON    START BUTTON    START BUTTON
-function startButton(x, y, startScale) {
-  // START TEXT
+// STARTSCREEN STARTSCREEN STARTSCREEN
+function startScreen() {
   push();
-
-  fill(0, 100, 50);
-  textSize(30 * startScale);
-  text("START", x + 150 * startScale, y + 150 * startScale);
+  textSize(32);
+  fill(0, 200, 40);
+  text("Press SPACEBAR To Start", x, y + 100);
   pop();
+}
 
+// GAMEOVER SCREEN
+function gameoverScreen() {
   push();
-  fill(150, 150, 150);
+  textSize(32);
+  fill(255, 50, 50);
+  text("TOO FAST TRY AGAIN!", x + 50, y + 100);
+  textSize(12);
+  text("Press SPACEBAR To Try Again", x + 150, y + 120);
+  pop();
+}
 
-  // LONG BARS
-  rect(
-    x + 100 * startScale,
-    y + 100 * startScale,
-    200 * startScale,
-    10 * startScale
-  );
-  rect(
-    x + 100 * startScale,
-    y + 170 * startScale,
-    200 * startScale,
-    10 * startScale
-  );
-
-  // SQUARES LEFT
-  rect(
-    x + 90 * startScale,
-    y + 110 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 80 * startScale,
-    y + 120 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 70 * startScale,
-    y + 130 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 70 * startScale,
-    y + 140 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 80 * startScale,
-    y + 150 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 90 * startScale,
-    y + 160 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  // SQUARES RIGHT
-  rect(
-    x + 300 * startScale,
-    y + 110 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 310 * startScale,
-    y + 120 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 320 * startScale,
-    y + 130 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 320 * startScale,
-    y + 140 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 310 * startScale,
-    y + 150 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
-
-  rect(
-    x + 300 * startScale,
-    y + 160 * startScale,
-    10 * startScale,
-    10 * startScale
-  );
+//WINNING SCREEN
+function winningScreen() {
+  push();
+  textSize(32);
+  fill(0, 200, 40);
+  text("YOU DID IT!", x + 120, y + 100);
+  textSize(12);
+  text("Press SPACEBAR To Continue", x + 130, y + 130);
   pop();
 }
 
@@ -593,6 +509,10 @@ function draw() {
   moonPlanet(x - 310, y, 2);
   moonPlanet(x + 250, y - 100, 0.5);
   rocket(rocketX + 175, rocketY, 0.15);
+
+  //startScreen();
+  gameoverScreen();
+  //winningScreen();
 
   if (isGameActive) {
     rocketY = rocketY + rocketVelocity;
