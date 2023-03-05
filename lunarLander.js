@@ -7,7 +7,10 @@ let rocketX = 100;
 let rocketVelocity = 1;
 let acceleration = 0.2;
 
-let isGameActive = true;
+let isGameActive = false;
+let winningScreenActive = false;
+let gameoverScreenActive = false;
+let startScreenActive = true;
 
 const startScale = 1.0;
 const rocketScale = 1.0;
@@ -46,7 +49,7 @@ function startScreen() {
   push();
   textSize(32);
   fill(0, 200, 40);
-  text("Press SPACEBAR To Start", x, y + 100);
+  text("Press W To Start", x + 90, y + 100);
   pop();
 }
 
@@ -55,9 +58,9 @@ function gameoverScreen() {
   push();
   textSize(32);
   fill(255, 50, 50);
-  text("TOO FAST TRY AGAIN!", x + 50, y + 100);
+  text("TOO FAST TRY AGAIN!", x + 20, y + 100);
   textSize(12);
-  text("Press SPACEBAR To Try Again", x + 150, y + 120);
+  text("Press SPACEBAR To Try Again", x + 120, y + 120);
   pop();
 }
 
@@ -503,6 +506,7 @@ function moonPlanet(x, y, moonScale) {
   pop();
 }
 
+// THE DRAW FUNCTION FOR THE GAME TO OPERATE
 function draw() {
   clear();
   background(40, 40, 40);
@@ -510,27 +514,46 @@ function draw() {
   moonPlanet(x + 250, y - 100, 0.5);
   rocket(rocketX + 175, rocketY, 0.15);
 
-  //startScreen();
-  gameoverScreen();
-  //winningScreen();
-
+  // Makes the rocket fall
   if (isGameActive) {
     rocketY = rocketY + rocketVelocity;
     rocketVelocity = rocketVelocity + acceleration;
   }
 
+  // Showing startscreen when game is not started
+  if (startScreenActive) {
+    startScreen();
+  }
+  // If statement for activating the screens
+  if (gameoverScreenActive) {
+    gameoverScreen();
+  }
+  if (winningScreenActive) {
+    winningScreen();
+  }
+
+  // Removing startscreen when game starts and the movement of the rocket
+  if (keyIsDown(87)) {
+    startScreenActive = false;
+    isGameActive = true;
+    rocketVelocity = rocketVelocity - 0.7;
+  }
+
+  // Switching between the screens if landing is completed or failed
+  if (rocketY > 300) {
+    if (rocketVelocity < 1.5) {
+      winningScreenActive = true;
+      isGameActive = false;
+    } else {
+      isGameActive = false;
+      gameoverScreenActive = true;
+      winningScreenActive = false;
+    }
+  }
+
+  // Game stops when rocket reaches Y 330
   if (rocketY > 330) {
     isGameActive = false;
-  }
-
-  if (keyIsDown(87)) {
-    rocketVelocity = rocketVelocity - 0.8;
-  }
-
-  if (keyIsDown(65)) {
-    rocketX = rocketX - speed;
-  } else if (keyIsDown(68)) {
-    rocketX = rocketX + speed;
   }
 }
 
@@ -542,8 +565,7 @@ function draw() {
 //Add velocity to the rocket XXX
 //Build a planet to land on XXX
 //Make it land on the planet (Point out the Y value) XXX
-//Create background with stars
-//Create Start and Finish / Game over screen
+//Create Start and Finish / Game over screen XXX
 //Calculate velocity to see if it is victory or loss
 //Add planning document
 
