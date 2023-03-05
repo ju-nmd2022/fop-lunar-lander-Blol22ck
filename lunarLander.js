@@ -1,17 +1,19 @@
 let x = 100;
 let y = 100;
 
-const speed = 10;
+// Rocket values for movement and position
 let rocketY = 100;
 let rocketX = 100;
-let rocketVelocity = 1;
+let rocketVelocity = 0.8;
 let acceleration = 0.2;
 
+// Screen states
 let isGameActive = false;
 let winningScreenActive = false;
 let gameoverScreenActive = false;
 let startScreenActive = true;
 
+// Scales for the different functions
 const startScale = 1.0;
 const rocketScale = 1.0;
 const fireScale = 1.0;
@@ -518,36 +520,60 @@ function draw() {
   if (isGameActive) {
     rocketY = rocketY + rocketVelocity;
     rocketVelocity = rocketVelocity + acceleration;
+
+    // Removing startscreen when game starts and the movement of the rocket
+    if (keyIsDown(87)) {
+      startScreenActive = false;
+      isGameActive = true;
+      rocketVelocity = rocketVelocity - 0.7;
+    }
+
+    // Switching between the screens if landing is completed or failed
+    if (rocketY > 300) {
+      // Landing correctly
+      if (rocketVelocity < 2.5) {
+        winningScreenActive = true;
+        isGameActive = false;
+      }
+      // Landing inccorectly
+      else {
+        isGameActive = false;
+        gameoverScreenActive = true;
+      }
+    }
   }
 
   // Showing startscreen when game is not started
   if (startScreenActive) {
     startScreen();
+    if (keyIsDown(87)) {
+      startScreenActive = false;
+      isGameActive = true;
+    }
   }
-  // If statement for activating the screens
+
+  // Switching to Start screen with spacebar and reseting values
   if (gameoverScreenActive) {
     gameoverScreen();
+    if (keyIsDown(32)) {
+      isGameActive = false;
+      gameoverScreenActive = false;
+      startScreenActive = true;
+      rocketY = 100;
+      rocketX = 100;
+      rocketVelocity = 0.8;
+    }
   }
+  // Switching to Start screen with spacebar and reseting values
   if (winningScreenActive) {
     winningScreen();
-  }
-
-  // Removing startscreen when game starts and the movement of the rocket
-  if (keyIsDown(87)) {
-    startScreenActive = false;
-    isGameActive = true;
-    rocketVelocity = rocketVelocity - 0.7;
-  }
-
-  // Switching between the screens if landing is completed or failed
-  if (rocketY > 300) {
-    if (rocketVelocity < 1.5) {
-      winningScreenActive = true;
+    if (keyIsDown(32)) {
       isGameActive = false;
-    } else {
-      isGameActive = false;
-      gameoverScreenActive = true;
       winningScreenActive = false;
+      startScreenActive = true;
+      rocketY = 100;
+      rocketX = 100;
+      rocketVelocity = 0.8;
     }
   }
 
@@ -556,20 +582,3 @@ function draw() {
     isGameActive = false;
   }
 }
-
-//startButton(110, 500, 1);
-//rocket(350, 700, 0.4);
-//moonPlanet(150, 0, 1);
-
-//NEXT STEPS:
-//Add velocity to the rocket XXX
-//Build a planet to land on XXX
-//Make it land on the planet (Point out the Y value) XXX
-//Create Start and Finish / Game over screen XXX
-//Calculate velocity to see if it is victory or loss
-//Add planning document
-
-//EXTRAS:
-// Add sound effects
-// Add glow to drawings
-// Add noise to the graphics
