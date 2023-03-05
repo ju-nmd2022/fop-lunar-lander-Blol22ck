@@ -1,3 +1,8 @@
+function setup() {
+  createCanvas(600, 400);
+  frameRate(30);
+}
+
 let x = 100;
 let y = 100;
 
@@ -18,10 +23,10 @@ const startScale = 1.0;
 const rocketScale = 1.0;
 const fireScale = 1.0;
 const moonScale = 1.0;
-noStroke();
 
 // ROCKET   ROCKET   ROCKET   ROCKET
 function rocket(x, y, rocketScale) {
+  noStroke();
   push();
   fill(0, 200, 40);
 
